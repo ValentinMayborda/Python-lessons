@@ -1,3 +1,4 @@
+# First lesson about print and input
 print('Hello!')
 print('What is your name?')
 name = input()
