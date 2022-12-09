@@ -1,10 +1,10 @@
 print('Програма видаляє те що написано в перших дужках () тексту')
 text = input('Введіть Ваш текст \n >> ')
 
-
-
-before = text[:text.find('(')]
-after = text[text.find(')')+1:]
-
-out_text = before + after
-print(out_text)
+if '(' and ')' not in text:
+    print(text)
+else:
+    before = text[:text.find('(')]  # Зріз до (
+    after = text[text.find(')')+1:]  # Зріз після )
+    out_text = before + after  # Склеювання зрізів
+    print(out_text)
