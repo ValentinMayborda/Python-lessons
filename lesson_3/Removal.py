@@ -1,6 +1,8 @@
 print('Програма видаляє те що написано в перших дужках () тексту')
 text = input('Введіть Ваш текст \n >> ')
 
+
+
 before = text[:text.find('(')]
 after = text[text.find(')')+1:]
 
