@@ -4,7 +4,7 @@ print('Програма перевіряє чи є введена строка �
 input_str = input('Введіть Вашу строку:').lower().replace(' ', '').replace('\t', '')
 palindrome_str = input_str[::-1]  # Створює зворотню копію вхідної строки
 
-print(input_str)
+#print(input_str)
 if input_str == palindrome_str:
     print(f'Cтрока є паліндромом!')
 else:
