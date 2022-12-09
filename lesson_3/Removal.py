@@ -6,5 +6,5 @@ if '(' and ')' not in text:
 else:
     before = text[:text.find('(')]  # Зріз до (
     after = text[text.find(')')+1:]  # Зріз після )
-    out_text = before + after  # Склеювання зрізів
+    out_text = before + after  # Склеювання  зрізів
     print(out_text)
