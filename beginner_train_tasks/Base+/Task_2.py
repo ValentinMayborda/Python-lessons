@@ -7,8 +7,9 @@ search = input('Введіть пошуковий запит\n>>')
 
 marker = 0
 while marker < len(text):
-    print(text.find(search, marker))
-    marker = text.find(search, marker) + 1
-    #except ValueError:
+    if text.find(search, marker) == -1:
         #print("String not found")
-        #marker = len(text)
+        break
+    else:
+        print(text.find(search, marker), end=' ')
+        marker = text.index(search, marker) + 1
