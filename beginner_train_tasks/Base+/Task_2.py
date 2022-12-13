@@ -5,11 +5,13 @@ print('Програма шукає усі можливі підстроки у �
 text = input('Введіть строку\n>>')
 search = input('Введіть пошуковий запит\n>>')
 
-marker = 0
-while marker < len(text):
-    if text.find(search, marker) == -1:
-        #print("String not found")
-        break
-    else:
-        print(text.find(search, marker), end=' ')
-        marker = text.index(search, marker) + 1
+if search not in text:
+    print("Строка відсутня")
+else:
+    marker = 0
+    while marker < len(text):
+        if text.find(search, marker) == -1:
+            break
+        else:
+            print(text.find(search, marker), end=' ')
+            marker = text.index(search, marker) + 1
