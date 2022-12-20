@@ -4,9 +4,14 @@
 print('Програма нумеролог от Бога')
 date = input('Введіть дату: ')
 
-total = 0
+tmp = 0  # Змінна для зберігання першого додавання
+total = 0  # Змінна для розрахунку суми чисел
 for c in date:
     if c.isdigit():
-        total += int(c)
+        tmp += int(c)
+
+for i in str(tmp):
+    if i.isdigit():
+        total += int(i)
 
 print(f'Сума всіх знайдених цифр = {total}')
