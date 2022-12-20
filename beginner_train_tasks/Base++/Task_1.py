@@ -14,4 +14,5 @@ for i in range(n):
     list1.append(temp_list)
 
 for elem in list1:
-    print(*elem)
+    print('{:^50}' .format(str(elem)))
+
