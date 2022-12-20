@@ -11,7 +11,6 @@ for c in date:
         tmp += int(c)
 
 for i in str(tmp):
-    if i.isdigit():
-        total += int(i)
+    total += int(i)
 
 print(f'Сума всіх знайдених цифр = {total}')
