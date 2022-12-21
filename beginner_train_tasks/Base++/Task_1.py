@@ -13,6 +13,10 @@ for i in range(n):
 
     list1.append(temp_list)
 
-for elem in list1:
-    print('{:^50}' .format(str(elem)))
+#for elem in list1:
+    #print('{:^50}'.format(str(elem)))
+    #print(' ' * len(list1[-1]), str(elem), ' ' * len(list1[-1]))
 
+for i in range(len(list1)):
+    print(' ' * (len(list1[-1]) - i), list1[i])
+    
