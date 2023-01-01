@@ -23,6 +23,7 @@ def get_user_choice():
         if choice == 'add':
             tmp = input('> Введіть нотатку: ')
             my_list.append(tmp)
+
         elif choice == 'earliest':
             # виводить збережені нотатки у хронологічному порядку - від найранішої до найпізнішої
             print('> Від найранішої до найпізнішої:')
@@ -35,6 +36,17 @@ def get_user_choice():
             for elem in list_reverse:
                 print(f'> {elem}')
 
+        # Создание нового списка:
+        #
+        # >>> xs = ['dddd','a','bb','ccc']
+        # >>> sorted(xs, key=len)
+        # ['a', 'bb', 'ccc', 'dddd']
+        # Сортировка места:
+        #
+        # >>> xs.sort(key=len)
+        # >>> xs
+        # ['a', 'bb', 'ccc', 'dddd']
+
         elif choice == 'longest':
             # виводить збережені нотатки у порядку їх довжини - від найдовшої до найкоротшої
             print('> Від найдовшої до найкоротшоЇ:')
@@ -43,6 +55,7 @@ def get_user_choice():
             # виводить збережені нотатки у порядку їх довжини - від найкоротшої до найдовшої
             print('> Від найкоротшої до найдовшої:')
             pass
+
         elif choice == 'clear':
             my_list.clear()
             print('Нотатки видалено!')
