@@ -1,29 +1,34 @@
-def show_user_interface():
+def show_user_interface(dictionary: dict):
+    """
+    Функція виводить на екран користувацький інтерфейс
+    :param dictionary: вхідним параметром є словник
+    :return: кортеж ключів
+    """
     print('Користувацький інтерфейс нотатника. Введіть команду з переліку: ')
-    user_interface_dict = {
-        'add': '- додати нотатку',
-        'earliest': '- виводить збережені нотатки у хронологічному порядку від найранішої до найпізнішої',
-        'latest': '- виводить збережені нотатки у хронологічному порядку від найпізнішої до найранішої',
-        'longest': '- виводить збережені нотатки у порядку їх довжини від найдовшої до найкоротшої',
-        'shortest': '- виводить збережені нотатки у порядку їх довжини від найкоротшої до найдовшої',
-        'clear': '- очистити нотатник',
-        'exit': '- вийти з нотатника'
-    }
-
-    for key, value in user_interface_dict.items():
+    for key, value in dictionary.items():
         print(f'{key:10} {value}')
 
-    return tuple(user_interface_dict.keys())
+    return tuple(dictionary.keys())
 
 
 def my_list_is_not_empty(mylist):
+    """
+    Функція перевіряє чи пустий список
+    :param mylist: вхідним параментром є основний список де мають зберігатись записи
+    :return: якщо список не пестий повертає True в іншому випадку повідомлення
+    """
     if len(mylist) > 0:
         return True
     else:
         print('> Нотатки пусті!')
 
 
-def how_meny_notes():
+def how_meny_notes() -> int:
+    """
+    Функція для команд earliest, latest, longest або shortest, яка запитує у користувача скільки
+    записів виводити на екран, реагує на некоректний ввод.
+    :return: повертає кількість записів
+    """
     while True:
         try:
             how_notes = int(input('> Скільки нотаток Ви бажаєте побачити на екрані: '))
@@ -36,10 +41,15 @@ def how_meny_notes():
 
 
 def get_user_choice(keys):
-    my_list = list()
+    """
+    Основна функція, яка веде діалог з користувачем, запитуючи в нього команди та реагує на них відповідно.
+    :param keys:  кортеж ключів словника user_interface_dict
+    :return: None (виводить на екран інформацію відповідно до діалогу з користувачем)
+    """
+    my_list = list()  # Основний список куди зберігаються нові записи
 
     while True:
-        choice = input('> ')
+        choice = input('> ')  # Змінна для вводу команд користувача
 
         if choice == keys[0]:  # add
             new_entry = input('> Введіть нотатку: ')
@@ -85,6 +95,7 @@ def get_user_choice(keys):
                     print(f'> {elem}')
 
         elif choice == keys[5]:  # clear
+            # чистить нотатник
             my_list.clear()
             print('> Нотатки видалено!')
         elif choice == keys[6]:  # exit
