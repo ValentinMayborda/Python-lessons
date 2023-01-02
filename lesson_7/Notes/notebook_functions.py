@@ -16,6 +16,25 @@ def show_user_interface():
     return tuple(user_interface_dict.keys())
 
 
+def my_list_is_not_empty(mylist):
+    if len(mylist) > 0:
+        return True
+    else:
+        print('> Нотатки пусті!')
+
+
+def how_meny_notes():
+    while True:
+        try:
+            how_notes = int(input('> Скільки нотаток Ви бажаєте побачити на екрані: '))
+            if how_notes < 1:
+                raise ValueError
+            return how_notes
+        except Exception:
+            print('> Не коретне значення!')
+            continue
+
+
 def get_user_choice(keys):
     my_list = list()
 
@@ -28,40 +47,41 @@ def get_user_choice(keys):
 
         elif choice == keys[1]:  # earliest
             # виводить збережені нотатки у хронологічному порядку - від найранішої до найпізнішої
-            if len(my_list) == 0:
-                print('> Нотатки пусті!')
-            else:
+            if my_list_is_not_empty(my_list):
+                how_notes = how_meny_notes()
+
                 print('> Від найранішої до найпізнішої:')
-                for elem in my_list:
+                for elem in my_list[:how_notes]:
                     print(f'> {elem}')
+
         elif choice == keys[2]:  # latest
             # виводить збережені нотатки у хронологічному порядку - від найпізнішої до найранішої
-            if len(my_list) == 0:
-                print('> Нотатки пусті!')
-            else:
+            if my_list_is_not_empty(my_list):
+                how_notes = how_meny_notes()
+
                 print('> Від найпізнішої до найранішої:')
                 list_reverse = my_list[::-1]
-                for elem in list_reverse:
+                for elem in list_reverse[:how_notes]:
                     print(f'> {elem}')
 
         elif choice == keys[3]:  # longest
             # виводить збережені нотатки у порядку їх довжини - від найдовшої до найкоротшої
-            if len(my_list) == 0:
-                print('> Нотатки пусті!')
-            else:
+            if my_list_is_not_empty(my_list):
+                how_notes = how_meny_notes()
+
                 print('> Від найдовшої до найкоротшоЇ:')
                 longest_my_list = sorted(my_list, key=len, reverse=True)
-                for elem in longest_my_list:
+                for elem in longest_my_list[:how_notes]:
                     print(f'> {elem}')
 
         elif choice == keys[4]:  # shortest
             # виводить збережені нотатки у порядку їх довжини - від найкоротшої до найдовшої
-            if len(my_list) == 0:
-                print('> Нотатки пусті!')
-            else:
+            if my_list_is_not_empty(my_list):
+                how_notes = how_meny_notes()
+
                 print('> Від найкоротшої до найдовшої:')
                 shortest_my_list = sorted(my_list, key=len)
-                for elem in shortest_my_list:
+                for elem in shortest_my_list[:how_notes]:
                     print(f'> {elem}')
 
         elif choice == keys[5]:  # clear
@@ -72,16 +92,3 @@ def get_user_choice(keys):
             exit(0)
         else:
             print('***Введена невідома команда!***')
-
-        print(my_list)
-
-
-
-
-if __name__ == '__main__':
-    print('Програма, для введення та перегляду нотаток.')
-    print('--------------------------------------------')
-
-    tuple_keys = show_user_interface()  # Перевели ключі словника в кортеж
-    # print(list_keys)
-    get_user_choice(tuple_keys)  # Передали кортеж в функцію у вигляді аргументів для порівняння
