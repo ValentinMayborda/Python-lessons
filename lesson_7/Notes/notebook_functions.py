@@ -11,7 +11,7 @@ def show_user_interface(dictionary: dict):
     return tuple(dictionary.keys())
 
 
-def my_list_is_not_empty(mylist):
+def my_list_is_not_empty(mylist: list):
     """
     Функція перевіряє чи пустий список
     :param mylist: вхідним параментром є основний список де мають зберігатись записи
@@ -40,7 +40,7 @@ def how_meny_notes() -> int:
             continue
 
 
-def get_user_choice(keys):
+def get_user_choice(keys: tuple):
     """
     Основна функція, яка веде діалог з користувачем, запитуючи в нього команди та реагує на них відповідно.
     :param keys:  кортеж ключів словника user_interface_dict
