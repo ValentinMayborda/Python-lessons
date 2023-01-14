@@ -16,12 +16,11 @@ if __name__ == '__main__':
     print('Програма, для введення та перегляду нотаток.')
     print('--------------------------------------------')
 
-    # Відкриваємо наш файл та зчитуємо його в список text_file_lst
-    with open('text_file.txt', mode='r', encoding='utf-8') as tf:
-        text_file_lst = tf.readlines()
+    # Викликаэмо функцію відкриття файлу та отримуємо список нотатків
+    text_file_lst = open_file()
 
-    tuple_keys = show_user_interface(user_interface_dict)  # Змінна для ключів словника
+    # Змінна для ключів словника
+    tuple_keys = show_user_interface(user_interface_dict)
 
-    # Передаємо кортеж в функцію у вигляді аргументів для порівняння
-    # та список з нотатками
+    # Передаємо кортеж в функцію у вигляді аргументів для порівняння та список з нотатками
     get_user_choice(tuple_keys, text_file_lst)

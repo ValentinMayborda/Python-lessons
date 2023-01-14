@@ -1,4 +1,25 @@
-def show_user_interface(dictionary: dict):
+def open_file() -> list:
+    """
+    Функція відкриває файл "text_file.txt" з нотатками, якщо той існує.
+    Якщо його не має, то створює файл "text_file.txt"
+    :return: повертає список нотатків
+    """
+    try:
+        # Відкриваємо наш файл та зчитуємо його в список text_file_lst
+        with open('text_file.txt', mode='r', encoding='utf-8') as tf:
+
+            lst = tf.readlines()
+
+    except Exception:
+        # Якщо файл відсутній то створюємо його
+        with open('text_file.txt', mode='w+', encoding='utf-8') as tf:
+
+            lst = tf.readlines()
+
+    return lst
+
+
+def show_user_interface(dictionary: dict) -> tuple:
     """
     Функція виводить на екран користувацький інтерфейс
     :param dictionary: вхідним параметром є словник
@@ -40,7 +61,7 @@ def how_many_notes() -> int:
             continue
 
 
-def get_user_choice(keys: tuple, textfile: str):
+def get_user_choice(keys: tuple, textfile: list):
     """
     Основна функція, яка веде діалог з користувачем, запитуючи в нього команди та реагує на них відповідно.
     :param textfile: список елементів(нотаток) з файлу text_file.txt
@@ -110,6 +131,7 @@ def get_user_choice(keys: tuple, textfile: str):
                     tfw.write(elem)
                     tfw.write('\n')
                 print('> До зустрічі!')
+                tfw.close()
                 exit(0)
         else:
             print('***Введена невідома команда!***')
