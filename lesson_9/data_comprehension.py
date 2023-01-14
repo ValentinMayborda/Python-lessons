@@ -13,5 +13,5 @@ if __name__ == '__main__':
     # в добавленого елемента вирізаємо строку до літери 'а'
     # робимо елемент з великої літери
     my_list = [elem.strip()[elem.find('a'):].capitalize() if 'a' in elem else '' for elem in lst]
-    print()
-    print(f'Вихідний список: {my_list}')
+
+    print(f'\nВихідний список: {my_list}')
