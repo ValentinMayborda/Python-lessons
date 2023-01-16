@@ -1,19 +1,26 @@
 def open_file() -> list:
     """
-    Функція відкриває файл, якщо той існує.
+    Функція відкриває файл passwords.txt з таким вмістом:
+    1232132133213
+    asdasdasdasdasd
+    qweqweqweqweqwe
+    sdasdasdasdasd
+    dsdsddsdsdsddds
+    ...
+    якщо той існує.
     Якщо його не має, то повідомляє користувача
     :return: повертає список елементів
     """
     while True:
         try:
             # Відкриваємо наш файл та зчитуємо його в список lst
-            with open('password.txt', mode='r', encoding='utf-8') as tf:
+            with open('passwords.txt', mode='r', encoding='utf-8') as tf:
                 lst = tf.readlines()
-                print('> Файл password.txt прочитано!')
+                print('> Файл passwords.txt прочитано!')
             return lst
         except Exception:
             # Якщо файл відсутній повідомляємо що треба файл!
-            print('> Файл відсутній! Додайте файл "password.txt" в один каталог з програмою!!! <')
+            print('> Файл відсутній! Додайте файл "passwords.txt" в один каталог з програмою!!! <')
             exit(0)
 
 
@@ -39,11 +46,11 @@ def write_file(lst: list, len_of_word: int):
     """
     my_list = [elem.strip() for elem in lst if len(elem.strip()) == len_of_word]
 
-    with open('password_filtered.txt', mode='w', encoding='utf-8') as tfw:
+    with open('passwords_filtered.txt', mode='w', encoding='utf-8') as tfw:
         for elem in my_list:
             tfw.write(elem)
             tfw.write('\n')
-        print(f'> Паролі відфільтровано та збережено у файлі - > password_filtered.txt!')
+        print(f'> Паролі відфільтровано та збережено у файлі - > passwords_filtered.txt!')
         exit(0)
 
 
