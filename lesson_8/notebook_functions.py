@@ -11,10 +11,8 @@ def open_file() -> list:
             lst = tf.readlines()
 
     except Exception:
-        # Якщо файл відсутній то створюємо його
-        with open('text_file.txt', mode='w+', encoding='utf-8') as tf:
-
-            lst = tf.readlines()
+        # Якщо файл відсутній то створюємо пустий список та повертаємо його
+        lst = list()
 
     return lst
 
@@ -131,7 +129,6 @@ def get_user_choice(keys: tuple, textfile: list):
                     tfw.write(elem)
                     tfw.write('\n')
                 print('> До зустрічі!')
-                tfw.close()
                 exit(0)
         else:
             print('***Введена невідома команда!***')
