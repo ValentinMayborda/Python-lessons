@@ -47,6 +47,22 @@ try:
         # в яких є таке значення поля категорії/бренду
         category_brand_dct = dict()
 
+        for row in data['data']:
+            # створює унікальний айді(ключ)
+            key = row['category'], row['brand']
+
+            category_brand_dct[key] =
+
+            j = 1
+            for key, value in category_brand_dct.items():
+                print(f'{j}. {key} : {value}')
+                j += 1
+
+
+            # print(category_brand_dct[key])
+
+        #print(category_brand_dct)
+
 except FileNotFoundError:
     print('Файл не знайдено!')
 except:
