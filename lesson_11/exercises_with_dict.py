@@ -16,11 +16,11 @@ try:
         - category
         - brand
         - price"""
-        lst_brand = list()  # список брендів
+        #lst_brand = list()  # список брендів
         for row in reader:
             # print(row['model'], row['category'], row['brand'], row['price'])
 
-            lst_brand.append(row['brand'])
+            #lst_brand.append(row['brand'])
 
             data['data'].append(row)
 
@@ -46,22 +46,15 @@ try:
         # де ключі - це назва категорії/бренду, а значення - це перелік унікальних айді товарів,
         # в яких є таке значення поля категорії/бренду
         category_brand_dct = dict()
-
-        for row in data['data']:
-            # створює унікальний айді(ключ)
-            key = row['category'], row['brand']
-
-            category_brand_dct[key] =
-
-            j = 1
-            for key, value in category_brand_dct.items():
-                print(f'{j}. {key} : {value}')
-                j += 1
+        """ category_brand_dct = {
+            'категорії/бренду': list()
+        }"""
 
 
-            # print(category_brand_dct[key])
 
-        #print(category_brand_dct)
+
+        print(category_brand_dct)
+
 
 except FileNotFoundError:
     print('Файл не знайдено!')
