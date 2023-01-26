@@ -21,7 +21,7 @@ def create_index(dictionary: dict, index_key: str) -> dict:
     return new_index
 
 
-def positions_in_view(unique_index_: dict, brand_dct_: dict, сategory_name_: str, debug: bool = False) -> dict:
+def calculate_brand(unique_index_: dict, brand_dct_: dict, сategory_name_: str, debug: bool = False) -> dict:
 
     ware_dct = dict()
     for uid in brand_dct_[сategory_name_]:
@@ -87,4 +87,6 @@ if __name__ == '__main__':
 
     for сategory_name in category_dct.keys():
         print(f'В категорії {сategory_name}  представлено',
-              positions_in_view(unique_index, category_dct, сategory_name))
+              calculate_brand(unique_index, category_dct, сategory_name))
+
+    # виводить на екран перелік повної інформації про кожний товар одного обраного бренда та однієї обраної категорії
