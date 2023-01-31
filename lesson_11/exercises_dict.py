@@ -19,18 +19,18 @@ def create_index(dictionary: dict, index_key: str) -> dict:
 
 
 def calculate_brand_in_category(unique_index_: dict, brand_dct_: dict,
-                                сategory_name_: str, debug: bool = False) -> dict:
+                                category_name_: str, debug: bool = False) -> dict:
     """
     Рахує кількість брендів в категорії
     :param unique_index_: словник унікальних індексів
     :param brand_dct_: індекс категорії
-    :param сategory_name_: назва категорії
+    :param category_name_: назва категорії
     :param debug: перевірка коректної роботи
     :return: словник
     """
 
     ware_dct = dict()
-    for uid in brand_dct_[сategory_name_]:
+    for uid in brand_dct_[category_name_]:
         if debug:
             print(unique_index_[uid])
         brand = unique_index_[uid]['brand']
@@ -98,6 +98,6 @@ if __name__ == '__main__':
 
     # Рахує розподіл товарів по брендам для кожної категорії та виводить це на екран.
     # Наприклад, в категорії Ноутбуки представлено 6 товарів від Lenovo, 8 від Mac, 10 від Dell, тощо.
-    for сategory_name in category_dct.keys():
-        print(f'В категорії {сategory_name}  представлено :',
-              calculate_brand_in_category(unique_index, category_dct, сategory_name))
+    for category_name in category_dct.keys():
+        print(f'В категорії {category_name}  представлено :',
+              calculate_brand_in_category(unique_index, category_dct, category_name))
