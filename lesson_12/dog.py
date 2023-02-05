@@ -5,6 +5,15 @@ class Dog:
 
     def __init__(self, name: str, age: int, gender: str, breed: str,
                  preferable_meal: set, last_vet_check: datetime = None):
+        """
+        Констуктор  для класу dog
+        :param name: ім'я собаки
+        :param age: вік
+        :param gender: стать
+        :param breed: порода
+        :param preferable_meal: іжа яку їсть
+        :param last_vet_check: чи перевірявся ветеринаром
+        """
         self.name = name
         self.age = age
         self.gender = gender
@@ -25,6 +34,10 @@ class Dog:
                f' років, зазвичай їсть: {", ".join(self.preferable_meal)}'
 
     def woof(self, count: int):
+        """
+        Собака гавкає,
+        :param count: кількість раз гавкання
+        """
         for i in range(count):
             print(f'{self.name} гавкає !')
 
@@ -57,9 +70,9 @@ class Dog:
             self.walk_check = False
 
 
-if __name__ == '__main__':
-    d = Dog('Джек', 3, 'мужской', 'дворняга', {'мясо', 'сухий корм', 'вода'})
-    print(d)
-    d.eat('мсо')
-    d.woof(1)
-    d.walk(2)
+# if __name__ == '__main__':
+#     d = Dog('Джек', 3, 'мужской', 'дворняга', {'мясо', 'сухий корм', 'вода'})
+#     print(d)
+#     d.eat('мясо')
+#     d.woof(1)
+#     d.walk(2)

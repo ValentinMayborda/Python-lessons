@@ -4,18 +4,13 @@ from datetime import datetime, timedelta
 
 
 if __name__ == '__main__':
+    last_vet_check = datetime.now()
+
     # Створюємо собак
     dogs = list()
-    dog_food = [
-        'мясо',
-        'молоко',
-        'вода',
-        'сухий корм',
-        'кісточка',
-        'каша'
-    ]
-    last_vet_check = datetime.now()
+    dog_food = ['мясо','молоко','вода','сухий корм','кісточка','каша']
     dogs_lst_name = ['Спайк', 'Скуби Ду', 'Саймон', 'Стич', 'Скай', 'Султан', 'Снежок', 'Сириус', 'Снупи', 'Спартак']
+
     for name in dogs_lst_name:
         last_vet_check -= timedelta(days=30)
         dogs.append(Dog(
@@ -26,11 +21,13 @@ if __name__ == '__main__':
             preferable_meal=set(random.choices(dog_food, k=3)),
             last_vet_check=last_vet_check
         ))
-
+    # Наповнюємо подіями життя собак
     for dog in dogs:
-        for food in random.choices(dog_food, k=5):
+        dog.walk(random.randint(1, 5))
+        for food in random.choices(dog_food, k=3):
             dog.eat(food)
 
+    # Перевіряємо як справи у собак
     for dog in dogs:
         print(f'Перевіряєм чи все добре з {dog}')
         # Чи собака їла
