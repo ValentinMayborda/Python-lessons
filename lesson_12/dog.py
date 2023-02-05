@@ -1,24 +1,3 @@
-# Написати клас собака (Dog), схожий до класу кішка (Cat) з запису заняття.
-# Інтегрувати клас собака до приюту домашніх питомців
-# (скористатись файлом https://github.com/kyrrylo/learn-python-hillel-30-11-2022/blob/
-# main/lesson_12/pet_shelter.py та доповнити його).
-#
-# Реалізувати наступні методи/поведінку в повсякденному житті собак:
-#
-# Їсти +
-# Гуляти +
-# Гавкати +
-#
-# Створити якнайменше 6 об'єктів класу собака (представників)' \
-# рандомною генерацією чи вписати в код (можна читати з файлу,
-# але краще уникати введення від користувача - так на користування
-# програмою витрачається забагато часу).
-#
-# Включити перевірку кожного дня:
-#
-# Чи собака гуляла
-# Чи собака їла
-# Чи собака була у ветерінара хоч раз за останні півроку
 from datetime import datetime
 
 
@@ -31,7 +10,8 @@ class Dog:
         self.gender = gender
         self.breed = breed
         self.preferable_meal = preferable_meal
-        self.fed_check = True
+        self.fed_check = False
+        self.walk_check = False
 
         if isinstance(last_vet_check, datetime):
             month_difference = (datetime.now() - last_vet_check).days // 30
@@ -41,7 +21,7 @@ class Dog:
                 self.vet_check = True
 
     def __str__(self) -> str:
-        return f'{self.gender.capitalize()} породи {self.breed} по імені {self.name}, віку {self.age}' \
+        return f'{self.gender} породи {self.breed} по імені {self.name}, віку {self.age}' \
                f' років, зазвичай їсть: {", ".join(self.preferable_meal)}'
 
     def woof(self, count: int):
@@ -50,7 +30,7 @@ class Dog:
 
     def eat(self, food: str):
         """
-        Собака їсть. Ящко їжа не підходить собака лає та не їсть.
+        Собака їсть. Ящко їжа не підходить собака лає та не їсть.Голодна собака не гуляє.
         :param food: їжа що дають собаці
        """
         if food in self.preferable_meal:
@@ -64,17 +44,22 @@ class Dog:
     def walk(self, hours: int):
         """
         Собака гуляє визначену кількість годин, якщо не голодна
-        :param hours: скільки год гуляти
+        :param hours: скільки годин  гуляти
         """
         if self.fed_check:
             print(f'{self.name} гуляє з задоволенням ')
+            self.walk_check = True
+        elif not self.fed_check and hours <= 2:
+            print(f'{self.name} голодна, але трошки погуляє')
+            self.walk_check = True
         else:
-            print(f'{self.name} голодний, тому гуляти не піде')
+            print(f'{self.name} голодна,гуляти не буде ')
+            self.walk_check = False
 
 
-# if __name__ == '__main__':
-#     d = Dog('Джек', 3, 'мужской', 'дворняга', {'мясо', 'сухий корм', 'вода'})
-#     print(d)
-#     d.eat('мясо')
-#     d.woof(1)
-#     d.walk(3)
+if __name__ == '__main__':
+    d = Dog('Джек', 3, 'мужской', 'дворняга', {'мясо', 'сухий корм', 'вода'})
+    print(d)
+    d.eat('мсо')
+    d.woof(1)
+    d.walk(2)

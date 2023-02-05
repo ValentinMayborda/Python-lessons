@@ -1,56 +1,69 @@
-#from cat import Cat
+from dog import Dog
 import random
 from datetime import datetime, timedelta
 
 
 if __name__ == '__main__':
-    # create pets
-    cats = list()
-    cat_food = [
-        'whiskas',
+    # Створюємо собак
+    dogs = list()
+    dog_food = [
         'мясо',
-        'рыба',
         'молоко',
         'вода',
-        'сухой корм',
-        'purina pro',
-        'gourmet',
-        'club 4 paws'
+        'сухий корм',
+        'кісточка',
+        'каша'
     ]
     last_vet_check = datetime.now()
-    for name in [
-        'Белочка', 'Арабика', 'Пинки', 'Дымка', 'Санни', 'Тень', 'Бланка', 'Лили', 'Фокси', 'Блэки', 'Полоска', 'Брауни', 'Злата'
-    ]:
+    dogs_lst_name = ['Спайк', 'Скуби Ду', 'Саймон', 'Стич', 'Скай', 'Султан', 'Снежок', 'Сириус', 'Снупи', 'Спартак']
+    for name in dogs_lst_name:
         last_vet_check -= timedelta(days=30)
-        cats.append(Cat(
+        dogs.append(Dog(
             name=name,
-            gender=random.choice(['кот', 'кошка']),
-            age=random.randint(1, 15),
+            gender=random.choice(['пес', 'собака']),
+            age=random.randint(1, 10),
             breed='',
-            preferable_meal=set(random.choices(cat_food, k=5)),
+            preferable_meal=set(random.choices(dog_food, k=3)),
             last_vet_check=last_vet_check
         ))
 
-    # performing pet everyday lifestyle
-    for cat in cats:
-        cat.sleep(4)
-        for food in random.choices(cat_food, k=5):
-            cat.eat(food)
+    for dog in dogs:
+        for food in random.choices(dog_food, k=5):
+            dog.eat(food)
 
-    # check if all pets are good
-    for cat in cats:
-        print(f'Проверяем всё ли хорошо с {cat}')
-        if not cat.fed_check:
-            if cat.gender == 'кошка':
-                print(f'Warning! {cat.name} голодна!')
-            elif cat.gender == 'кот':
-                print(f'Warning! {cat.name} голоден!')
+    for dog in dogs:
+        print(f'Перевіряєм чи все добре з {dog}')
+        # Чи собака їла
+        if not dog.fed_check:
+            if dog.gender == 'пес':
+                print(f'Warning! {dog.name} хоче їсти!')
+            elif dog.gender == 'собака':
+                print(f'Warning! {dog.name} голодна!')
             else:
-                print(f'{cat.name} - unknown gender {cat.gender}!')
-        if not cat.vet_check:
-            if cat.gender == 'кошка':
-                print(f'Warning! {cat.name} давно не проверялась у ветеринара!')
-            elif cat.gender == 'кот':
-                print(f'Warning! {cat.name} давно не проверялся у ветеринара!')
+                print(f'{dog.name} - невідома осіб {dog.gender}!')
+        else:
+            print(f'{dog.name} сьогодні їла')
+
+        # Чи собака гуляла
+        if not dog.walk_check:
+            if dog.gender == 'пес':
+                print(f'Warning! {dog.name} сьогодні не гуляв!')
+            elif dog.gender == 'собака':
+                print(f'Warning! {dog.name} сьогодні не гуляла!!')
             else:
-                print(f'{cat.name} - unknown gender {cat.gender}!')
+                print(f'{dog.name} - невідома осіб {dog.gender}!')
+        else:
+            print(f'{dog.name} сьогодні гуляла')
+
+        # Чи собака була у ветеринара хоч раз за останні півроку
+        if not dog.vet_check:
+            if dog.gender == 'собака':
+                print(f'Warning! {dog.name} давно не перевірялась  ветеринаром!')
+            elif dog.gender == 'пес':
+                print(f'Warning! {dog.name} давно не перевірявся ветеринаром!')
+            else:
+                print(f'{dog.name} - невідома осіб {dog.gender}!')
+        else:
+            print(f'{dog.name} була в ветеренара')
+
+        print('*' * 200)
