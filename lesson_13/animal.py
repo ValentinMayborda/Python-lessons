@@ -22,8 +22,7 @@ class Animal:
             self.eat_today = True
         else:
             print(f'{self.name} не понимает что можно делать с {food}')
-            #self.eat_today = False
-
+           
     def say(self, count: int):
         """
         Что делает животное когда хочет привлечь ваше внимание
