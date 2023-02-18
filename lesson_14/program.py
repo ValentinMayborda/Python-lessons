@@ -39,7 +39,7 @@ class JSONFileProcessor(FileProcessor):
         with open(self.path, 'r') as f:
             data = json.load(f)
             for item in data:
-                entry = DataEntry(item[0], item[1])
+                entry = DataEntry(item['name'], item['value'])
                 self.entries.append(entry)
 
 
@@ -47,3 +47,12 @@ class DataEntry:
     def __init__(self, name, value):
         self.name = name
         self.value = value
+
+
+if __name__ == '__main__':
+
+    processor = FileProcessor('SKU')
+    processor.process()
+
+    for entry in processor.entries:
+        print(entry.name, entry.value)
