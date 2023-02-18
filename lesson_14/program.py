@@ -29,6 +29,7 @@ class CSVFileProcessor(FileProcessor):
             for row in reader:
                 entry = DataEntry(row[0], row[1])
                 self.entries.append(entry)
+        return self.entries
 
 
 class JSONFileProcessor(FileProcessor):
@@ -39,8 +40,10 @@ class JSONFileProcessor(FileProcessor):
         with open(self.path, 'r') as f:
             data = json.load(f)
             for item in data:
-                entry = DataEntry(item['name'], item['value'])
-                self.entries.append(entry)
+                if isinstance(item, dict):
+                    entry = DataEntry(item['name'], item['value'])
+                    self.entries.append(entry)
+        return self.entries
 
 
 class DataEntry:
@@ -50,7 +53,6 @@ class DataEntry:
 
 
 if __name__ == '__main__':
-
     processor = FileProcessor('SKU')
     processor.process()
 
